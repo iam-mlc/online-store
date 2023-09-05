@@ -1,0 +1,1 @@
+export type ItemCreator<Data_G, Items_G> = (data: Data_G) => Items_G;
