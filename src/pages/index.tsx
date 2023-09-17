@@ -1,124 +1,166 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import { useFetchAndQuery } from "@/hooks/useFetchAndQuery";
+import { QueryResponse } from "@/types/QueryResponse";
+import CategoryTabs from "@/components/Tabs/CategoryTabs/CategoryTabs";
+import React, { useState, useEffect, useMemo } from "react";
+import KeenSlider from "@/contexts/KeenSliderContext/KeenSlider";
+import ImageSlider from "@/components/keenSlider/ImageSlider";
+import { Product, Products } from "@/types/Product";
+import HeroSection from "@/components/HeroSection/HeroSection";
+import Banner from "@/components/Cards/HomePageCards/Banner";
+import { Categories, Category } from "@/types/Categories";
+import { productCards } from "@/components/Cards/helpers/productCards";
+import ProductCard3Slider from "@/components/keenSlider/ProductsSlider";
+import { organizeData } from "@/utils/groupByCategory";
+import { useWindowSize } from "react-use";
+import Accordion from "@/components/Accordion/Accordion";
+import FeaturedProducts from "@/components/FeaturedProducts";
+import BackgroundImage from "@/components/BackgroundImage";
+import { Cart, Location, User, VisitLink } from "@/components/Icons";
+import Link from "next/link";
+import { BannerDetails } from "@/types/BannerDetails";
+import ProductsBanner from "@/components/ProductsBanner";
+import { useFetchProducts } from "@/hooks/useFetchProducts";
+import FeaturedImageSlider from "@/components/keenSlider/FeaturedImageSlider/FeaturedImageSlider";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const url = "https://dummyjson.com/products";
+  const { categories, isError, isLoading, getCategory, products } = useFetchProducts(url);
+  const smartphones = getCategory("smartphones");
+  const laptops = getCategory("laptops");
+
+  const details = [
+    {
+      title:
+        "Interdum velit euismod in pellentesque massa placerat duis ultricies lacus",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Senectus et netus et malesuada fames ac turpis egestas maecenas.",
+    },
+    {
+      title:
+        "Morbi quis commodo odio aenean sed adipiscing diam donec adipiscing",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin libero nunc consequat interdum varius sit.",
+    },
+    {
+      title:
+        "Ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget gravida",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus mauris a diam maecenas.",
+    },
+    {
+      title: "Dolor sit amet consectetur adipiscing elit ut aliquam purus sit",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At varius vel pharetra vel.",
+    },
+    {
+      title:
+        "Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida neque",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus et malesuada fames ac.",
+    },
+  ];
+
+  const faq = [
+    {
+      question: "Is this a real product?",
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    },
+    {
+      question: "What is this product?",
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    },
+    {
+      question: "How much does it cost?",
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    },
+  ];
+
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+    <>
+      <main className="">
+        <section className="relative md:pb-[10em] overflow-hidden">
+          <HeroSection />
+        </section>
+        <section className="relative lg:p-[15em] md:px-4 py-[10em] px-[2em] my-36 md:my-0">
+          <div className="flex flex-col items-center gap-20">
+            <h2 className="lg:text-5xl text-3xl font-bold text-center text-white">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </h2>
+            <Link
+              href={`/about-us`}
+              className="text-[0.8] md:text-base font-bold py-2 md:px-8 px-4 rounded-full inline-block text-white text-center  bg-gray-500 w-fit "
+            >
+              Learn More
+            </Link>
+          </div>
+          <BackgroundImage src={"/images/homePage/design/12.jpg"} />
+        </section>
+        <section className="relative w-full m-auto py-[12em] ">
+          <CategoryTabs data={categories}/>
+        </section>
+        <section className="relative lg:p-[15em] md:px-4 py-[10em] px-[2em] my-36 md:my-0">
+          <div className="flex flex-col gap-20">
+            <h2 className="lg:text-5xl text-3xl font-bold text-center text-white">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </h2>
+            <div className="flex md:flex-row gap-10 md:justify-evenly flex-col items-center">
+              <RoundedLink icon={<Cart />} href="/products" title="Shop now" />
+              <RoundedLink icon={<User />} href="/about-us" title="About us" />
+              <RoundedLink icon={<Location />} href="/" title="Location" />
+            </div>
+            <BackgroundImage src={"/images/homePage/design/12.jpg"} />
+          </div>
+        </section>
+        <section className="relative py-[10em] flex flex-col gap-28 ">
+          <ProductsBanner
+            copywriteMessage={details}
+            isReversed={true}
+            data={smartphones ? smartphones.items : undefined}
+          />
+          <ProductsBanner
+            copywriteMessage={details}
+            data={laptops ? laptops.items : undefined}
+          />
+        </section>
+        <section className="flex flex-col gap-10">
+          <h2 className="lg:text-4xl text-3xl font-bold text-center px-10 md:px-0">
+            Frequently Asked Questions
           </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`${inter.className} mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+          <div className="md:px-16 px-2">
+            <Accordion data={faq} title="Homepage-FAQs" />
+          </div>
+        </section>
+      </main>
+    </>
+  );
 }
+
+interface RoundedLinkProps {
+  title: string;
+  icon: React.ReactNode;
+  href: string;
+}
+
+const RoundedLink: React.FC<RoundedLinkProps> = ({ title, icon, href }) => {
+  return (
+    <>
+      <Link className="inline-block" href={href}>
+        <div className="md:w-[10em] md:h-[10em] w-[7em] h-[7em] rounded-full bg-white ">
+          <div className="relative top-[50%] left-[50%] w-fit transform translate-y-[-50%] translate-x-[-50%]">
+            <div className="w-[25%] m-auto">{icon}</div>
+            <p className="text-center mt-4 font-bold md:text-xl">{title}</p>
+          </div>
+        </div>
+      </Link>
+    </>
+  );
+};
