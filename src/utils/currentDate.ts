@@ -2,7 +2,7 @@ export const today = new Date();
 export const day = today.getDate();
 export const year = today.getFullYear();
 export const month = today.getMonth();
-// const currentDate = `${year}-${month + 1}-${day}`;
+
 
 export function timeStamp(locale: string) {
     const timeStamp = new Date(Date.now());
@@ -17,5 +17,3 @@ export function timeStamp(locale: string) {
     };
     return timeStamp.toLocaleString(locale, options);
   }
-
-// export default currentDate;

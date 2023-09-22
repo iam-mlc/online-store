@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { FormProps } from "../CheckoutForm";
 import GeolocationContext from "@/contexts/GeoLocationContext/GeolocationContext";
 import { Field } from "formik";
 import ValidationMessage from "./ValidationMessage";
@@ -20,14 +19,8 @@ const RadioInput: React.FC<RadioInputProps> = ({}) => {
 
   const {
     coords,
-    errorMessage,
-    isError,
-    isLoading,
     isSupported,
-    isRetrying,
-    isRejected,
     handleGeolocation,
-    reachedTimeout,
   } = useContext(GeolocationContext);
 
   const handleMakeDelivery = (isOn: boolean) => {

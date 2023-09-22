@@ -1,16 +1,10 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ProductsProvider from "@/contexts/ProductsContext/ProductsProvider";
 import { CartProvider } from "@/contexts/CartContext/CartProvider";
 import Layout from "@/components/Layout";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import ProgressBar from "@badrap/bar-of-progress";
 import * as Toast from "@radix-ui/react-toast";
 import GeolocationProvider from "@/contexts/GeoLocationContext/GeoLocationProvider";
@@ -32,10 +26,6 @@ Router.events.on("routeChangeComplete", progress.finish);
 Router.events.on("routeChangeError", progress.finish);
 
 export default function App({ Component, pageProps }: AppProps) {
-
-  // const router = useRouter()
-
-  // console.log(router)
   return (
     <QueryClientProvider client={queryClient}>
       <Toast.Provider swipeDirection="right">

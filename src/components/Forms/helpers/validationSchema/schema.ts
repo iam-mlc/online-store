@@ -1,5 +1,3 @@
-import toCamelCase from "@/utils/toCamelCase";
-import validationData from "./validationData";
 import "yup-phone-lite";
 // import { object } from "yup";
 import { object, string, number, date } from "yup";

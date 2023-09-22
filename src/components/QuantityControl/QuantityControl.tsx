@@ -1,12 +1,9 @@
 import {
-  useState,
   Dispatch,
   SetStateAction,
   useRef,
   useEffect,
-  Component,
 } from "react";
-import { Button as AriakitButton } from "@ariakit/react";
 import { Minus, Plus } from "../Icons";
 
 interface QuantityControlProps {

@@ -1,6 +1,5 @@
 import Thumbnail from "./Buttons/Thumbnail";
 import { createThumbnailImages } from "../helpers/images";
-import UnorderedList from "@/components/UnorderedList/UnorderedList";
 
 interface ThumbnailsGroupProps {
   currentSlide: number;

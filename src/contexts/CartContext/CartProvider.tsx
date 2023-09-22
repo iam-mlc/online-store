@@ -1,6 +1,4 @@
 import {
-  Fragment,
-  createContext,
   useContext,
   useEffect,
   useReducer,
@@ -52,8 +50,6 @@ export interface CartContextValues {
   removeFromCart: (id: ProductID) => void;
   resetCart: () => void;
 }
-
-// const CURRENCY = "MZN";
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const { CURRENCY_SYMBOL } = useContext(LocaleContext);
@@ -166,7 +162,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           itemID: action.id,
           searchItems: cartData.products,
         });
-        
+
         if (item) {
           setToastContent({
             title: `${item.title} was removed from cart ❌`,

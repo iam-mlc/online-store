@@ -1,12 +1,8 @@
-// import * as React from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import capitalizeFirstLetter from "@/utils/capitalizeFirstLetter";
 import NavList from "./NavList";
 import { memo, useEffect, useMemo, useState } from "react";
 import NavLink from "./NavLink";
-import { fromCamelCaseToSpaces } from "@/utils/fromCamelCaseConverters";
 import NavBackButton from "./NavBackButton";
-import { organizeData } from "@/utils/groupByCategory";
 import { productLinks } from "./helper/links";
 import { ArrowRight, CaretRight } from "../Icons";
 import { Categories, Category } from "@/types/Categories";
@@ -162,7 +158,7 @@ const SeeMoreLink: React.FunctionComponent<SeeMoreProps> = ({ data }) => {
           query: {
             category: data.pathName,
           },
-        }} // `/data.pathName`
+        }}
         className="border-y-[1px] border-black/[.30] inline-block w-full bg-white"
       >
         <div className="flex justify-between p-3 align-middle w-full hover:ghost">

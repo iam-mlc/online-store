@@ -1,34 +1,20 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import { useFetchAndQuery } from "@/hooks/useFetchAndQuery";
-import { QueryResponse } from "@/types/QueryResponse";
 import CategoryTabs from "@/components/Tabs/CategoryTabs/CategoryTabs";
-import React, { useState, useEffect, useMemo } from "react";
-import KeenSlider from "@/contexts/KeenSliderContext/KeenSlider";
-import ImageSlider from "@/components/keenSlider/ImageSlider";
-import { Product, Products } from "@/types/Product";
+import React from "react";
 import HeroSection from "@/components/HeroSection/HeroSection";
-import Banner from "@/components/Cards/HomePageCards/Banner";
-import { Categories, Category } from "@/types/Categories";
-import { productCards } from "@/components/Cards/helpers/productCards";
-import ProductCard3Slider from "@/components/keenSlider/ProductsSlider";
-import { organizeData } from "@/utils/groupByCategory";
-import { useWindowSize } from "react-use";
 import Accordion from "@/components/Accordion/Accordion";
-import FeaturedProducts from "@/components/FeaturedProducts";
 import BackgroundImage from "@/components/BackgroundImage";
-import { Cart, Location, User, VisitLink } from "@/components/Icons";
+import { Cart, Location, User } from "@/components/Icons";
 import Link from "next/link";
-import { BannerDetails } from "@/types/BannerDetails";
 import ProductsBanner from "@/components/ProductsBanner";
 import { useFetchProducts } from "@/hooks/useFetchProducts";
-import FeaturedImageSlider from "@/components/keenSlider/FeaturedImageSlider/FeaturedImageSlider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const url = "https://dummyjson.com/products";
-  const { categories, isError, isLoading, getCategory, products } = useFetchProducts(url);
+  const { categories, isError, isLoading, getCategory, products } =
+    useFetchProducts(url);
   const smartphones = getCategory("smartphones");
   const laptops = getCategory("laptops");
 
@@ -82,7 +68,6 @@ export default function Home() {
     },
   ];
 
-
   return (
     <>
       <main className="">
@@ -105,7 +90,7 @@ export default function Home() {
           <BackgroundImage src={"/images/homePage/design/12.jpg"} />
         </section>
         <section className="relative w-full m-auto py-[12em] ">
-          <CategoryTabs data={categories}/>
+          <CategoryTabs data={categories} />
         </section>
         <section className="relative lg:p-[15em] md:px-4 py-[10em] px-[2em] my-36 md:my-0">
           <div className="flex flex-col gap-20">

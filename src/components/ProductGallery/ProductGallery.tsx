@@ -5,7 +5,6 @@ import SearchBar from "@/components/SearchBar/SearchBar";
 import UnorderedList from "@/components/UnorderedList/UnorderedList";
 import lunr from "lunr";
 import sanitizeInput from "@/utils/sanitizeInput";
-import { QueryResponse } from "@/types/QueryResponse";
 import { Products } from "@/types/Product";
 import { Categories, Category } from "@/types/Categories";
 import { ListItems } from "@/types/ListItem";
@@ -20,10 +19,8 @@ interface handleCategoryChange {
 
 const ProductGallery: React.FunctionComponent<IProductGalleryProps> = ({}) => {
   const url = "https://dummyjson.com/products";
-  // const productsQuery= useFetchAndQuery(url) as QueryResponse;
   const { products, categories, isLoading } = useFetchProducts(url);
   const searchRef = useRef<HTMLInputElement>(null);
-  // const [products, setProducts] = useState<Products>([]);
   const [searchValue, setSearchValue] = useState("");
   const [itemOffset, setItemOffset] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
@@ -33,12 +30,6 @@ const ProductGallery: React.FunctionComponent<IProductGalleryProps> = ({}) => {
   const router = useRouter();
   const categoryQuery = router.query.category;
   const inputElement = searchRef.current;
-
-  // console.log(testCategories)
-
-  // const categories: Categories<Products> = organizeData(products).sort((a, b) =>
-  //   a.title === "All products" ? -1 : b.title === "All products" ? 1 : 0
-  // );
   categories.sort((a, b) =>
     a.title === "All products" ? -1 : b.title === "All products" ? 1 : 0
   );
@@ -97,9 +88,6 @@ const ProductGallery: React.FunctionComponent<IProductGalleryProps> = ({}) => {
   }, [categories]);
 
   useEffect(() => {
-    // if (query.data !== undefined) {
-    //   setProducts(query.data.products);
-    // }
     if (cards.length !== 0) {
       setCurrentItems(cards[0].items);
     }
@@ -161,7 +149,6 @@ const ProductGallery: React.FunctionComponent<IProductGalleryProps> = ({}) => {
     this.pipeline.add(
       lunr.trimmer,
       lunr.stopWordFilter
-      // Notice that lunr.stemmer is not included here
     );
   };
 

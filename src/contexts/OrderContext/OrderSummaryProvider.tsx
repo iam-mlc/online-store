@@ -18,8 +18,7 @@ const OrderSummaryProvider: React.FC<OrderSummaryProviderProps> = ({
   children,
 }) => {
   const { cartData } = useContext(CartContext);
-  const { ISO_CURRENCY_CODE, CURRENCY_SYMBOL, COUNTRY_CODE, LANGUANGE_CODE } =
-    useContext(LocaleContext);
+  const { ISO_CURRENCY_CODE } = useContext(LocaleContext);
 
   const { subTotal: totalProductsPrice } = cartData;
 
@@ -27,7 +26,6 @@ const OrderSummaryProvider: React.FC<OrderSummaryProviderProps> = ({
     withoutDiscount: totalProductsPrice.withoutDiscount,
     withDiscount: totalProductsPrice.withDiscount,
   });
-  const [isLoading, setIsLoading] = useState(false);
 
   const { STORE_LOCATION, coords } = useContext(GeolocationContext);
 
@@ -39,8 +37,6 @@ const OrderSummaryProvider: React.FC<OrderSummaryProviderProps> = ({
     petrolPrice: PRETROL_PRICE,
     carLitreConsumption: 15,
   });
-
-  // console.log(cartData);
 
   useEffect(() => {
     const deliveryApproved = cartData.totalItems >= 3;

@@ -2,7 +2,7 @@ import {
   withScaleEffect,
   ScaleEffectProps,
 } from "@/components/hocs/withScaleEffect";
-import { ZoomIn, ZoomOut as Icon, Reset } from "@/components/Icons";
+import { ZoomOut as Icon } from "@/components/Icons";
 
 interface ZoomOutButtonProps extends ScaleEffectProps {}
 

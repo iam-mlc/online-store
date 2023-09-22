@@ -1,5 +1,3 @@
-// import * as React from "react";
-import ProductCard2 from "./Cards/ProductCards/ProductCard2";
 import UnorderedList from "./UnorderedList/UnorderedList";
 import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
@@ -85,7 +83,7 @@ const Gallery: React.FunctionComponent<GalleryProps> = ({
    * @return {void}
    */
   type onPageChange = (selectedItem: { selected: number }) => void;
-  const handlePageClick : onPageChange = (selectedItem) => {
+  const handlePageClick: onPageChange = (selectedItem) => {
     // This is calculating the starting index of the items to be displayed on the next page. It is Ensuring that the new offset is always within the bounds of the items array. It is handling cases where the number of items is not evenly divisible by the itemsPerPage prop. In such cases, the modulo operation ensures that the new offset wraps around to the beginning of the items array when it reaches the end.
     const newOffset = (selectedItem.selected * itemsPerPage) % items.length;
 

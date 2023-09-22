@@ -3,7 +3,4 @@ export type ListItem = {
     component: React.ReactNode;
 }
 
-type Data = Record<string,any>
-
-
 export type ListItems = ListItem[];

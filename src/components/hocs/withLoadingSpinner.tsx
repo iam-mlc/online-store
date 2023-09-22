@@ -1,4 +1,3 @@
-import { Spinner } from "@/components/Icons";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import React, { useState } from "react";
 import Image from "next/image";

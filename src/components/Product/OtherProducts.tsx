@@ -1,20 +1,10 @@
-import { useFetchAndQuery } from "@/hooks/useFetchAndQuery";
 import { Product, Products } from "@/types/Product";
-import { QueryResponse } from "@/types/QueryResponse";
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useMemo, useState } from "react";
-// import FeaturedProduct from "@/components/FeaturedProducts/FeaturedProducts";
+import { useCallback } from "react";
 import ProductsBanner from "../ProductsBanner";
 import { useFetchProducts } from "@/hooks/useFetchProducts";
 import { useRouter } from "next/router";
 import shuffleArray from "@/utils/shuffleArary";
-
-const FeaturedProduct = dynamic(
-  () => import("@/components/FeaturedProducts/FeaturedProducts"),
-  {
-    ssr: false,
-  }
-);
 
 interface OtherProductsProps {
   data: Product;

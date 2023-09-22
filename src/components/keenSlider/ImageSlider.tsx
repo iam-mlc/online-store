@@ -1,6 +1,5 @@
-import "keen-slider/keen-slider.min.css";
 import UnorderedList from "../UnorderedList/UnorderedList";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import KeenSliderContext from "@/contexts/KeenSliderContext/KeenSilderContext";
 import { KeenSliderContextValues } from "@/contexts/KeenSliderContext/KeenSlider";
 import NextImage from "next/image";
@@ -28,22 +27,9 @@ const ImageSlider: React.FunctionComponent<SliderProps> = ({
   listClassName,
   initialSlideIndex,
 }) => {
-  const {
-    currentSlide,
-    moveToPrev,
-    moveToNext,
-    moveToSlide,
-    destroySlider,
-    sliderRef,
-    loaded,
-    dragStarted,
-    slideChanged,
-    totalSlides,
-    firstSlide,
-    lastSlide,
-    dragEnded,
-    rtl,
-  } = useContext(KeenSliderContext) as KeenSliderContextValues;
+  const { currentSlide, sliderRef } = useContext(
+    KeenSliderContext
+  ) as KeenSliderContextValues;
 
   const images = items.map((data, index) => {
     return {

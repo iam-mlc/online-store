@@ -2,8 +2,6 @@ import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import NavLink from "./NavLink";
 import Hamburger from "hamburger-react";
 import NavList from "./NavList";
-import groupByCategory, { organizeData } from "@/utils/groupByCategory";
-import { productLinks } from "./helper/links";
 import {
   useState,
   useEffect,
@@ -15,26 +13,21 @@ import {
 } from "react";
 import DropdownMenuContent from "./DropdownMenuContent";
 import NavBackButton from "./NavBackButton";
-import { useMeasure, useWindowSize } from "react-use";
+import { useWindowSize } from "react-use";
 import {
   ArrowRight,
   CaretDown,
   CaretRight,
   Delete,
-  RemoveFromShoppingBag,
   ShoppingBag as ShoppingBagIcon,
   Spinner,
 } from "@/components/Icons";
 import { CartContext } from "@/contexts/CartContext/cartContext";
 import Image from "next/image";
 import UnorderedList from "../UnorderedList/UnorderedList";
-import { useAttributeObserver } from "@/hooks/useAttributeObserver";
 import { useDataStateObserver } from "./hooks/useDataStateObserver";
 import { manageBodyScroll } from "./helper/manageBodyScroll";
-import Link from "next/link";
-import { QueryResponse } from "@/types/QueryResponse";
 import { ProductID, ProductInCart, Products } from "@/types/Product";
-import { useFetchAndQuery } from "@/hooks/useFetchAndQuery";
 import {
   CartContextValues,
   addToCartOptions,
@@ -44,10 +37,7 @@ import { withScaleEffect } from "../hocs/withScaleEffect";
 import { useFetchProducts } from "@/hooks/useFetchProducts";
 import { Category } from "@/types/Categories";
 
-interface NavbarProps {
-  // cart: Record<string, any>[];
-  // query: QueryResponse;
-}
+interface NavbarProps {}
 
 interface HamburgerMenuProps {
   handleNavTabsGenerator: (dataState?: string) => {
@@ -58,7 +48,6 @@ interface HamburgerMenuProps {
   handleValueChange: (value: string) => void;
 }
 interface DropdownMenuProps {
-  // query: QueryResponse;
   handleValueChange: (value: string) => void;
   receivesDataState?: string;
   navbarHeight: number;
@@ -68,9 +57,6 @@ interface CartProps {
   navbarHeight?: number;
 }
 
-const NavTrigger = withScaleEffect(NavigationMenu.Trigger);
-
-// Define a React functional component called Navbar that takes in NavbarProps as props
 const Navbar: React.FunctionComponent<NavbarProps> = memo(({}) => {
   // This value state was created to give a back functionality when interacting with the Dropdown Menu(DropdownMenu Component)
   const [value, setValue] = useState("");
@@ -99,10 +85,8 @@ const Navbar: React.FunctionComponent<NavbarProps> = memo(({}) => {
     ) {
       if (windowWidth >= lg) {
         setNavbarValue("");
-        // setHamburgerMenuIsOpen(false);
       } else {
         setNavbarValue("");
-        // setHamburgerMenuIsOpen(false);
       }
     }
 
@@ -279,7 +263,6 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = memo(
             color="#162d13ff"
             size={20}
             toggled={dataState === "open"}
-            // toggle={handleMenuToggle}
             label="Show menu"
           />
         </NavigationMenu.Trigger>
@@ -484,9 +467,7 @@ interface CartItem {
 
 const CartItem: React.FC<CartItem> = ({ product }) => {
   const { numberToCurrency } = useContext(LocaleContext);
-  const { addToCart, removeFromCart } = useContext(
-    CartContext
-  ) as CartContextValues;
+  const { removeFromCart } = useContext(CartContext) as CartContextValues;
   return (
     <div className="flex flex-col md:flex-row p-2 gap-8 items-center">
       <div className="md:w-[10em] md:h-[6em] w-[8em] h-[8em] rounded-full overflow-hidden  ">

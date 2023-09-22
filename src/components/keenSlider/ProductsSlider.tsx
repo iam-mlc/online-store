@@ -1,13 +1,9 @@
 "use client"
-import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react";
 import UnorderedList from "../UnorderedList/UnorderedList";
 import { useContext, useEffect, useState } from "react";
 import { useWindowSize } from "react-use";
 import KeenSliderContext from "@/contexts/KeenSliderContext/KeenSilderContext";
 import { KeenSliderContextValues } from "@/contexts/KeenSliderContext/KeenSlider";
-import { Categories } from "@/types/Categories";
-import { ConfigItems } from "@/types/ConfigItems";
 import { Product, Products } from "@/types/Product";
 import { productCards } from "../Cards/helpers/productCards";
 import { Next, Prev } from "../Icons";
@@ -36,19 +32,7 @@ const ProductsSlider: React.FunctionComponent<SliderProps> = ({
   const [isReady, setIsReady] = useState(false);
   const {
     currentSlide,
-    moveToPrev,
-    moveToNext,
-    moveToSlide,
-    destroySlider,
     sliderRef,
-    loaded,
-    dragStarted,
-    slideChanged,
-    totalSlides,
-    firstSlide,
-    lastSlide,
-    dragEnded,
-    updateSlider
   } = useContext(KeenSliderContext) as KeenSliderContextValues;
   useEffect(() =>{
     if (typeof window !== 'undefined') {
@@ -70,11 +54,6 @@ const ProductsSlider: React.FunctionComponent<SliderProps> = ({
     data: items,
     itemNumber: cardNumber,
   }) as ListItems;
-
-  // useEffect(() => {
-  //   updateSlider();
-  //   console.log("router changed")
-  // },[router.asPath])
 
   return (
     <>

@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { forwardRef } from "react";
 import { withScaleEffect } from "../hocs/withScaleEffect";
@@ -17,7 +16,7 @@ interface IDialogContentProps {
   dialogDescription?: string;
 }
 
-const CloseTrigger = withScaleEffect(DialogPrimitive.Close)
+const CloseTrigger = withScaleEffect(DialogPrimitive.Close);
 
 const DialogContent = forwardRef<HTMLDivElement, IDialogContentProps>(
   (
@@ -74,11 +73,7 @@ const DialogContent = forwardRef<HTMLDivElement, IDialogContentProps>(
                   : closeClassName
               }
             >
-              {closeElement === undefined ? (
-                <CloseIcon color="#ffffff" />
-              ) : (
-                closeElement
-              )}
+              {closeElement === undefined ? <CloseIcon /> : closeElement}
             </CloseTrigger>
           </DialogPrimitive.Content>
         </DialogPrimitive.Portal>
@@ -87,11 +82,7 @@ const DialogContent = forwardRef<HTMLDivElement, IDialogContentProps>(
   }
 );
 
-interface CloseIconProps {
-  color: string;
-}
-
-const CloseIcon = ({ color }: CloseIconProps) => {
+const CloseIcon = () => {
   return (
     <svg
       viewBox="0 0 100 100"
@@ -99,22 +90,8 @@ const CloseIcon = ({ color }: CloseIconProps) => {
       height="100%"
       className={"stroke-white opacity-70"}
     >
-      <line
-        x1="0"
-        y1="0"
-        x2="100"
-        y2="100"
-        // stroke={color}
-        strokeWidth="20"
-      />
-      <line
-        x1="100"
-        y1="0"
-        x2="0"
-        y2="100"
-        // stroke={color}
-        strokeWidth="20"
-      />
+      <line x1="0" y1="0" x2="100" y2="100" strokeWidth="20" />
+      <line x1="100" y1="0" x2="0" y2="100" strokeWidth="20" />
     </svg>
   );
 };

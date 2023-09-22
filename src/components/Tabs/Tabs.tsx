@@ -1,4 +1,3 @@
-// import * as React from "react";
 import * as RadixTabs from "@radix-ui/react-tabs";
 // import TabList from "./TabsList";
 // import TabContent from "./TabsContent";
@@ -26,7 +25,6 @@ interface ITabsProps {
 }
 
 const Tabs: React.FunctionComponent<ITabsProps> = ({
-  defaultValue,
   listClassName,
   triggerClassName,
   contentClassName,

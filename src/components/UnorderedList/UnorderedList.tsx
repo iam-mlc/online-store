@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { forwardRef, useEffect, useState } from "react";
 import { ListItems } from "@/types/ListItem";
 

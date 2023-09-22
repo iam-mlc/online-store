@@ -1,7 +1,6 @@
 import toCamelCase from "@/utils/toCamelCase";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import React, { forwardRef, useEffect, useState } from "react";
-import { FaAngleLeft } from "react-icons/fa";
+import React, { forwardRef } from "react";
 
 interface NavListProps {
   items: { label: string; component: React.ReactNode; thumbnail?: string }[];

@@ -1,5 +1,5 @@
 import { withLoadingSpinner } from "@/components/hocs/withLoadingSpinner";
-import { ProductInCart, ProductsInCart } from "@/types/Product";
+import { ProductInCart } from "@/types/Product";
 import NextImage from "next/image";
 
 const Image = withLoadingSpinner(NextImage);

@@ -1,21 +1,11 @@
 import UnorderedList from "../UnorderedList/UnorderedList";
-import { useContext, useEffect, useState } from "react";
-import { useWindowSize } from "react-use";
+import { useContext} from "react";
 import KeenSliderContext from "@/contexts/KeenSliderContext/KeenSilderContext";
 import { KeenSliderContextValues } from "@/contexts/KeenSliderContext/KeenSlider";
-import { Categories } from "@/types/Categories";
-import { ConfigItems } from "@/types/ConfigItems";
-import { Products } from "@/types/Product";
-import { productCards } from "../Cards/helpers/productCards";
 import { ListItems } from "@/types/ListItem";
-import Image from "next/image";
 import BackgroundImage from "../BackgroundImage";
 import { BannerDetails } from "@/types/BannerDetails";
 
-type Detail = {
-  title: string;
-  description?: string;
-};
 
 interface SliderProps {
   items: BannerDetails[];
@@ -28,22 +18,10 @@ const DescriptionSlider: React.FunctionComponent<SliderProps> = ({
   items,
   itemClassName,
   listClassName,
-  initialSlideIndex,
 }) => {
   const {
     currentSlide,
-    moveToPrev,
-    moveToNext,
-    moveToSlide,
-    destroySlider,
     sliderRef,
-    loaded,
-    dragStarted,
-    slideChanged,
-    totalSlides,
-    firstSlide,
-    lastSlide,
-    dragEnded,
     rtl,
   } = useContext(KeenSliderContext) as KeenSliderContextValues;
 

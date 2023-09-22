@@ -1,6 +1,6 @@
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { DownChevron } from "../Icons";
-import { ProductID, ProductTitle, Products } from "@/types/Product";
+import { ProductID, ProductTitle} from "@/types/Product";
 
 interface AccordionProps {
   data: ProductFAQ[];

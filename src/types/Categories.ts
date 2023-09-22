@@ -1,7 +1,3 @@
-import { Config, ConfigItems } from "./ConfigItems";
-import { ListItems } from "./ListItem";
-import { Products } from "./Product";
-
 export type Category<Item_G> = {
   thumbnail: ImageURL;
   items: Item_G;

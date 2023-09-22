@@ -1,7 +1,4 @@
-// import * as React from "react";
-import { FaArrowLeft } from "react-icons/fa";
 import { ArrowLeft } from "../Icons";
-
 
 interface NavBackButtonProps {
   changeValue: (newValue: string) => void;

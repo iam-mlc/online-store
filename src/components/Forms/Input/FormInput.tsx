@@ -10,7 +10,6 @@ interface FormInputProps {
   receivesComponent: React.FC<RenderProps>;
   handleErrorMessage: (msg: string) => JSX.Element;
   hasNote?: string;
-  // isOptional: boolean;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -19,7 +18,6 @@ const FormInput: React.FC<FormInputProps> = ({
   receivesComponent,
   handleErrorMessage,
   hasNote,
-  // isOptional = true,
 }) => {
   const fieldName = toCamelCase(label);
   const isRequired = isFieldRequired(fieldName, checkoutSchema);

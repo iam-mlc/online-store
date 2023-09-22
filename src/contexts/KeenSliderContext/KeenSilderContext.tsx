@@ -1,7 +1,6 @@
+import { createContext } from "react";
+import { KeenSliderContextValues } from "./KeenSlider";
 
+const KeenSliderContext = createContext({} as KeenSliderContextValues);
 
-import { createContext } from 'react';
-
-const KeenSliderContext = createContext<Record<string, any>>({});
-
-export default KeenSliderContext
+export default KeenSliderContext;

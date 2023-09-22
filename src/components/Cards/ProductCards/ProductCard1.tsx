@@ -1,25 +1,9 @@
 import Link from "next/link";
 import { useContext, useState } from "react";
 import Image from "next/image";
-import {
-  ProductDescription,
-  ProductID,
-  ProductImage,
-  ProductPrice,
-  ProductStock,
-  ProductTitle,
-} from "@/types/Product";
 import LocaleContext from "@/contexts/LocaleContext/LocaleContext";
 import { ProductCardProps } from "@/types/ProductCard";
 
-// interface ProductCardProps {
-//   title?: ProductTitle;
-//   description?: ProductDescription;
-//   price?: ProductPrice;
-//   image?: ProductImage;
-//   stock?: ProductStock;
-//   id: ProductID;
-// }
 
 interface LoadingSpinnerProps {
   className?: string;
@@ -31,9 +15,7 @@ const ProductCard1: React.FunctionComponent<ProductCardProps> = ({
   thumbnail,
   id,
 }) => {
-  // const style: CSSProperties = {
-  //   "--image-url": `url(${image})`,
-  // } as React.CSSProperties;
+
   const [imageLoaded, setImageLoaded] = useState(false);
   const { numberToCurrency } = useContext(LocaleContext);
 
@@ -44,7 +26,6 @@ const ProductCard1: React.FunctionComponent<ProductCardProps> = ({
   return (
     <div className="lg:w-[100%] md:w-[100%] sm:w-full py-16 lg:px-8 md:px-6 sm:px-3">
       <Link
-        // style={style}
         href={`/products/${id}`}
         className="relative block overflow-hidden lg:rounded-[3em] md:rounded-[2em] sm:rounded-[1.5em] shadow-2xl"
       >

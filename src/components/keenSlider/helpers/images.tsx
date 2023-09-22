@@ -27,16 +27,6 @@ export const createMainImages = (pictures: string[], title: string) =>
       label: title + index,
       component: (
         <>
-          {/* <div className="md:w-[50em] h-[20em] lg:h-[20em] w-full">
-            <Image
-              width={600}
-              height={600}
-              src={picture}
-              alt={title}
-              className="sm:w-[100%]  md:w-[100%] md:h-[40em] lg:w-[100%] lg:h-[30em] h-[20em] md:object-cover object-contain bg-black "
-              loading="lazy"
-            />
-          </div> */}
           <div className="h-full w-full">
             <Image
               width={800}

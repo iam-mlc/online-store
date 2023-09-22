@@ -1,12 +1,9 @@
-import { Category } from "@/types/Categories";
 import { Products } from "@/types/Product";
-import { organizeData } from "@/utils/groupByCategory";
-import { memo, useEffect, useMemo, useState } from "react";
+import { memo,  useMemo} from "react";
 import FeaturedProducts from "./FeaturedProducts";
 import Banner from "./Cards/HomePageCards/Banner";
-import { QueryResponse } from "@/types/QueryResponse";
 import { BannerDetails } from "@/types/BannerDetails";
-import dynamic from "next/dynamic";
+
 
 
 interface ProductsBannerProps {

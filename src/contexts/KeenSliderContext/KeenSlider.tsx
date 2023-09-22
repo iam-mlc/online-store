@@ -3,11 +3,8 @@ import { useEffect, useState } from "react";
 import KeenSliderContext from "./KeenSilderContext";
 import "keen-slider/keen-slider.min.css";
 import {
-  KeenSliderHooks,
-  KeenSliderInstance,
   KeenSliderOptions,
   KeenSliderPlugin,
-  SliderOptions,
   useKeenSlider,
 } from "keen-slider/react";
 import autoChange from "./plugins/autoChange";
@@ -30,11 +27,6 @@ In the keen slider react.d.ts files you will see some generics. Here I explain w
   This is a generic type that extends string and represents the hooks that can be used with the slider. By default, H is set to KeenSliderHooks keen-slider.io.
 
 */
-
-interface SliderConfig {
-  options: KeenSliderOptions;
-  plugins: KeenSliderPlugin[];
-}
 
 type Milliseconds = number;
 
@@ -105,7 +97,6 @@ const KeenSlider: React.FC<KeenSliderProps> = ({
     initialSlide !== undefined ? initialSlide : 0
   );
   const [loaded, setLoaded] = useState(false);
-  const [canRerender, setCanRerender] = useState(false);
   const [slideChanged, setSlideChanged] = useState(false);
   const [dragStarted, setDragStarted] = useState(false);
   const [totalSlides, setTotalSlides] = useState(0);
@@ -196,10 +187,6 @@ const KeenSlider: React.FC<KeenSliderProps> = ({
 
   const slider = sliderInstance.current;
 
-  // useEffect(() => {
-  //   if (loaded && slider) {
-  //   }
-  // }, [sliderInstance, options]);
 
   useEffect(() =>{
     if (typeof window !== 'undefined') {

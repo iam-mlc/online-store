@@ -9,9 +9,6 @@ interface PrevProps extends ScaleEffectProps {}
 const Prev: React.FC<PrevProps> = ({ ...props }) => {
   return (
     <button
-      // className={`${className !== undefined ? className : ""} block`}
-      // onClick={onClick}
-      // disabled={disabled}
       {...props}
     >
       <Icon className="opacity-70" />

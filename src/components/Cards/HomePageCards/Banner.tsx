@@ -4,11 +4,9 @@ import DescriptionSlider from "@/components/keenSlider/DescriptionSlider";
 import ImageSlider from "@/components/keenSlider/ImageSlider";
 import KeenSlider from "@/contexts/KeenSliderContext/KeenSlider";
 import { BannerDetails } from "@/types/BannerDetails";
-import { Transition } from "@headlessui/react";
 import NextImage from "next/image";
 import { useEffect, useState } from "react";
 import { useWindowSize } from "react-use";
-// import * as React from "react";
 
 type Picture = {
   title: string;
@@ -128,7 +126,6 @@ const Banner: React.FunctionComponent<IBannerProps> = ({
             </>
           ) : (
             <div className="h-full w-full bg-slate-400 absolute lg:static z-10 animate-pulse flex flex-col justify-center lg:p-16 p-8 gap-12 items-center md:items-start">
-              {/* <div className="p-4 bg-black/[.50] w-[80%] rounded-full h-[30%] "></div> */}
               <div className="p-4 bg-black/[.50] w-[90%] rounded-full"></div>
               <div className="p-4 bg-black/[.50] w-[90%] rounded-full"></div>
               <div className="p-4 bg-black/[.50] w-[50%] rounded-full"></div>

@@ -1,34 +1,20 @@
-// import Button from "../../../../components/Button/Button";
 import {
-  ErrorMessage,
-  Field,
   FieldInputProps,
   FieldMetaProps,
   Form,
   Formik,
   FormikProps,
-  useFormik,
 } from "formik";
-// import validationData from "../../../../utils/bookingForm/validationData";
 import initialValues from "./helpers/validationSchema/initialValues";
 import checkoutSchema from "./helpers/validationSchema/schema";
-import toCamelCase from "@/utils/toCamelCase";
 import { CartContext } from "@/contexts/CartContext/cartContext";
-import { useContext, useEffect, useState } from "react";
-import { getDistance } from "geolib";
-import { Cart, ProductsInCart } from "@/types/Product";
+import { useContext } from "react";
 import { CartContextValues } from "@/contexts/CartContext/CartProvider";
-import { escape } from "querystring";
-import { UserLocation } from "@/types/userLocation";
-import { Coordinates } from "@/types/Coordinates";
-import { useGeolocation } from "@/hooks/useGeolocation";
-import Link from "next/link";
 import GeolocationContext from "@/contexts/GeoLocationContext/GeolocationContext";
 import TextInput from "./TextInput/TextInput";
 import PhoneNumberInput from "./PhoneNumberInput/PhoneNumberInput";
 import EmailInput from "./EmailInput/EmailInput";
 import FormInput from "./Input/FormInput";
-import RadioInputMessage from "./RadioInput/RadioInput";
 import RadioInput from "./RadioInput/RadioInput";
 import LocaleContext from "@/contexts/LocaleContext/LocaleContext";
 import UnorderedList from "../UnorderedList/UnorderedList";
@@ -48,7 +34,6 @@ export interface RenderProps {
 }
 
 const CheckoutForm: React.FC<FormProps> = ({}) => {
-  const { cartData } = useContext(CartContext) as CartContextValues;
   const { coords } = useContext(GeolocationContext);
   const { COUNTRY_CODE, LANGUANGE_CODE } = useContext(LocaleContext);
   const locale = `${LANGUANGE_CODE}-${COUNTRY_CODE}`;
@@ -71,8 +56,6 @@ const CheckoutForm: React.FC<FormProps> = ({}) => {
     };
   });
 
-  // console.log(coords);
-
   return (
     <div className="p-8">
       <div className="mb-12  flex flex-col gap-2">
@@ -87,7 +70,6 @@ const CheckoutForm: React.FC<FormProps> = ({}) => {
         initialValues={initialValues}
         validationSchema={checkoutSchema}
         onSubmit={(values, { setSubmitting }) => {
-          //   const data = JSON.stringify(values, null, 2);
           let userLocation;
           if (coords) {
             userLocation = {

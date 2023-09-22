@@ -1,4 +1,3 @@
-// import { Portal } from "@radix-ui/react-portal";
 import { PortalProps } from "@radix-ui/react-portal";
 import { withLoadingSpinner } from "@/components/hocs/withLoadingSpinner";
 import { withScaleEffect } from "@/components/hocs/withScaleEffect";
@@ -63,7 +62,7 @@ const ProductTitle: React.FunctionComponent<AddtoCartProps> = ({ data }) => {
 const CartButton: React.FunctionComponent<AddtoCartProps> = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
   const { numberToCurrency } = useContext(LocaleContext);
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
   const breakpoints = {
     lg: 1024,
     md: 768,

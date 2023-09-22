@@ -1,7 +1,6 @@
-import GeolocationContext from "@/contexts/GeoLocationContext/GeolocationContext";
 import { Coordinates } from "@/types/Coordinates";
 import { calculateDistanceCost } from "@/utils/calculateDistanceCost";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface UseDeliveryCalculatorParams {
   destinationCoordinates: Coordinates | GeolocationCoordinates | null;
@@ -19,7 +18,6 @@ export const useDeliveryCalculator: UseDeliveryCalculatorHook = ({
   carLitreConsumption,
 }) => {
   const [deliveryPrice, setDeliveryPrice] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (userCoordinates && destinationCoordinates) {

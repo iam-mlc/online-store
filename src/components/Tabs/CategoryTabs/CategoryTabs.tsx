@@ -1,9 +1,5 @@
-import * as RadixTabs from "@radix-ui/react-tabs";
-import { organizeData } from "@/utils/groupByCategory";
 import { useEffect, useMemo, useState } from "react";
 import { avatarsCreator } from "@/components/Avatar/helper/avatars";
-import { productCards } from "@/components/Cards/helpers/productCards";
-// import { sliders } from "@/components/swiperSlider/helpers/sliders";
 import KeenSlider from "@/contexts/KeenSliderContext/KeenSlider";
 import TabsSlider from "@/components/keenSlider/TabsSlider";
 import { Products } from "@/types/Product";
@@ -11,11 +7,9 @@ import { Categories } from "@/types/Categories";
 import Tabs from "../Tabs";
 import { ListItem } from "@/types/ListItem";
 import { TriggerAndContent } from "@/types/TriggerAndContent";
-import { QueryResponse } from "@/types/QueryResponse";
 import { useWindowSize } from "react-use";
 
 interface ITabsProps {
-
   data: Categories<Products> | undefined;
 }
 

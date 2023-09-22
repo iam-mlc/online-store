@@ -1,17 +1,15 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { useState } from "react";
-
-
+import { useQuery } from "@tanstack/react-query";
 
 export const useFetchAndQuery = (url: string) => {
-
   const queryKeys = splitUrl(url);
 
-  const query = useQuery({ queryKey: queryKeys, queryFn: () => fetchData(url) });
+  const query = useQuery({
+    queryKey: queryKeys,
+    queryFn: () => fetchData(url),
+  });
 
   return query;
 };
-
 
 const fetchData = async (url: string) => {
   const res = await fetch(url);

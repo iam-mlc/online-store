@@ -1,49 +1,15 @@
-// import * as React from "react";
 "use client";
-import Heading from "../../Heading";
 import Link from "next/link";
 import NextImage from "next/image";
-import "react-loading-skeleton/dist/skeleton.css";
-import { useContext, useEffect, useMemo, useState } from "react";
-import {
-  Cart,
-  Cart as CartIcon,
-  Check,
-  Close,
-  Danger,
-  Fullscreen,
-  VisitLink,
-} from "@/components/Icons";
+import { useContext } from "react";
+import { Cart, Close } from "@/components/Icons";
 import { withLoadingSpinner } from "@/components/hocs/withLoadingSpinner";
-import { CartContext } from "@/contexts/CartContext/cartContext";
-import {
-  ProductDescription,
-  ProductID,
-  ProductImage,
-  ProductImages,
-  ProductPrice,
-  ProductStock,
-  ProductTitle,
-} from "@/types/Product";
-
 import { TriggerAndContent } from "@/types/TriggerAndContent";
-import { ListItem } from "@/types/ListItem";
 import Dialog from "@/components/Dialog/Dialog";
-import ProductCard2 from "./ProductCard2";
 import LocaleContext from "@/contexts/LocaleContext/LocaleContext";
 import { ProductCardProps } from "@/types/ProductCard";
 import { dialogConfig } from "../helpers/dialogConfig";
 import { ConfigItem } from "@/types/ConfigItems";
-
-// interface ProductCardProps {
-//   title?: ProductTitle;
-//   description?: ProductDescription;
-//   price?: ProductPrice;
-//   image?: ProductImage;
-//   stock?: ProductStock;
-//   id: ProductID;
-//   itemIndex?: number;
-// }
 
 const Image = withLoadingSpinner(NextImage);
 
@@ -89,24 +55,11 @@ const ProductCard3: React.FunctionComponent<ProductCardProps> = (props) => {
           <div className="absolute inset-0 h-full w-full bg-black/[.60] z-[5]"></div>
         </Link>
       </div>
-      {/* <Loading /> */}
     </div>
   );
 };
 
-// const Picture: React.FC<ProductCardProps> = ({ thumbnail, title }) => {
-//   return (
-//     <div className="relative w-full h-full">
-
-//       <div className="absolute inset-0 h-full w-full bg-black/[.50] z-[5]"></div>
-//     </div>
-//   );
-// };
-
 const DialogButton: React.FC<ProductCardProps> = (props) => {
-  const { addToCart } = useContext(CartContext);
-  const { title, description, price, thumbnail, stock, id } = props;
-
   const dialog = dialogConfig({
     data: props,
     itemNumber: 1,

@@ -1,7 +1,6 @@
-import { memo, useContext, useState } from "react";
+import { memo } from "react";
 import UnorderedList from "@/components/UnorderedList/UnorderedList";
 import Tabs from "@/components/Tabs/Tabs";
-import { Check, Danger } from "@/components/Icons";
 import { Product } from "@/types/Product";
 
 interface InfoTabsProps {

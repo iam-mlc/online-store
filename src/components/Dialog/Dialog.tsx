@@ -32,8 +32,6 @@ const Dialog: React.FunctionComponent<IDialogProps> = ({
   titleClassName,
   descriptionClassName,
   items,
-  isOpen,
-  onOpenChange,
 }) => {
   return (
     <DialogPrimitive.Root>

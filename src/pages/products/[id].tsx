@@ -7,16 +7,11 @@ import FeaturedImageSlider from "@/components/keenSlider/FeaturedImageSlider/Fea
 import KeenSlider from "@/contexts/KeenSliderContext/KeenSlider";
 import { Product } from "@/types/Product";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import fetchData from "@/utils/fetchData";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import LocaleContext from "@/contexts/LocaleContext/LocaleContext";
 import BackgroundImage from "@/components/BackgroundImage";
-import "keen-slider/keen-slider.min.css";
-import { useFetchProducts } from "@/hooks/useFetchProducts";
-import ProductsSlider from "@/components/keenSlider/ProductsSlider";
-import ProductsBanner from "@/components/ProductsBanner";
 
 interface IProductPageProps {
   product: Product;
@@ -133,6 +128,5 @@ const ProductPage: React.FunctionComponent<IProductPageProps> = ({
     </main>
   );
 };
-
 
 export default ProductPage;

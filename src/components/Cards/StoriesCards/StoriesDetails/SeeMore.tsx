@@ -1,9 +1,5 @@
 import Button from "@/components/Button";
-import Image from "next/image";
 import { useContext, useState } from "react";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import Slider2 from "@/components/keenSlider/Template";
-import Dialog from "@/components/Dialog/Dialog";
 import KeenSlider from "@/contexts/KeenSliderContext/KeenSlider";
 import QuantityControl from "@/components/QuantityControl/QuantityControl";
 import { Product } from "@/types/Product";

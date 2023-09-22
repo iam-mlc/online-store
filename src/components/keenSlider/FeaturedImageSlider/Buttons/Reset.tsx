@@ -9,9 +9,6 @@ interface ResetButtonProps extends ScaleEffectProps {}
 const ResetButton: React.FC<ResetButtonProps> = ({ ...props }) => {
   return (
     <button
-      // className={`${className !== undefined ? className : ""} block`}
-      // onClick={onClick}
-      // disabled={disabled}
       {...props}
     >
       <Icon className="opacity-70" />

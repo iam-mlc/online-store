@@ -1,4 +1,3 @@
-import { KeenSliderContextValues } from "@/contexts/KeenSliderContext/KeenSlider";
 import NextButton from "../Buttons/Next";
 import PrevButton from "../Buttons/Prev";
 

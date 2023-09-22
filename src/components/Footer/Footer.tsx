@@ -34,7 +34,6 @@ function Footer<IFooterProps>({}) {
       path: "/location",
     },
   ];
-  // const year = new Date().getFullYear();
   const navItems = navNames.map((item) => {
     return {
       label: item.title,

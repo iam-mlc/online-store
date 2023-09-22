@@ -3,7 +3,6 @@ import KeenSlider from "@/contexts/KeenSliderContext/KeenSlider";
 import * as React from "react";
 import ImageSlider from "../keenSlider/ImageSlider";
 import Link from "next/link";
-import Image from "next/image";
 import BackgroundImage from "../BackgroundImage";
 
 interface IHeroSectionProps {}

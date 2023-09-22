@@ -58,7 +58,6 @@ export const useGeolocation = () => {
         retryGettingLocation();
       }, 3000);
     } else {
-      //   clearTimeout(retryTimeout);
       setIsSupported(false);
     }
   };

@@ -1,6 +1,6 @@
 import { Delete } from "@/components/Icons";
 import { CartContext } from "@/contexts/CartContext/cartContext";
-import { ProductInCart, ProductsInCart } from "@/types/Product";
+import { ProductInCart} from "@/types/Product";
 import { useContext } from "react";
 
 interface DeleteButton {

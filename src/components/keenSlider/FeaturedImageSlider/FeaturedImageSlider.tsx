@@ -1,12 +1,9 @@
 import UnorderedList from "@/components/UnorderedList/UnorderedList";
 import { useContext } from "react";
-import { useWindowSize } from "react-use";
 import KeenSliderContext from "@/contexts/KeenSliderContext/KeenSilderContext";
 import Thumbnails from "./ThumbnailsGroup";
 import LightBox from "./LightBox";
 import NavigationControls from "./Controls/NavigationControls";
-import Image from "next/image";
-import { withLoadingSpinner } from "@/components/hocs/withLoadingSpinner";
 import { createMainImages } from "../helpers/images";
 
 export interface FeaturedImageSliderProps {
@@ -36,7 +33,6 @@ const FeaturedImageSlider: React.FunctionComponent<
     moveToNext,
     moveToSlide,
     sliderRef,
-    loaded,
   } = useContext(KeenSliderContext);
 
   const mainImages = createMainImages(images, title);

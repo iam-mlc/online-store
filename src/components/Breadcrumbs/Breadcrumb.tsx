@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import * as React from "react";
 import OrderedList from "../OrderedList/OrderedList";
 import Link from "next/link";
-import { ArrowRight, CaretRight, RightAngle } from "../Icons";
 
 interface BreadcrumbStep {
   label: string;
@@ -29,8 +28,9 @@ const Breadcrumb: React.FunctionComponent<BreadcrumbProps> = ({ pathway }) => {
           <div className="relative  ">
             {index === getCurrentStepIndex() ? (
               <>
-                <span className="text-xs font-medium inline-block underline underline-offset-4">{step.label}</span>
-                {/* <div className="absolute top-0 right-0 bg-black/[.10] w-full h-full"></div> */}
+                <span className="text-xs font-medium inline-block underline underline-offset-4">
+                  {step.label}
+                </span>
               </>
             ) : (
               <Link
@@ -41,14 +41,11 @@ const Breadcrumb: React.FunctionComponent<BreadcrumbProps> = ({ pathway }) => {
               </Link>
             )}
           </div>
-            {
-              !(index === pathway.length - 1) && (
-                <div>
-                  {/* <RightAngle className="w-3 h-3"/> */}
-                  <span className="font-bold">&gt;</span>
-                </div>
-              )
-            }
+          {!(index === pathway.length - 1) && (
+            <div>
+              <span className="font-bold">&gt;</span>
+            </div>
+          )}
         </div>
       ),
     };

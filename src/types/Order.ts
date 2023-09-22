@@ -1,5 +1,5 @@
 import { Amount } from "./Amount";
-import { Cart, ProductInCart } from "./Product";
+import { ProductInCart } from "./Product";
 
 export type Order = {
   total: TotalPrice;

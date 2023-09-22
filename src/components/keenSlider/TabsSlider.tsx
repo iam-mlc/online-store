@@ -1,12 +1,7 @@
-import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react";
 import UnorderedList from "../UnorderedList/UnorderedList";
-import { useContext, useEffect, useMemo, useState } from "react";
-import { useWindowSize } from "react-use";
+import { useContext } from "react";
 import KeenSliderContext from "@/contexts/KeenSliderContext/KeenSilderContext";
 import { KeenSliderContextValues } from "@/contexts/KeenSliderContext/KeenSlider";
-import { Categories } from "@/types/Categories";
-import { ConfigItems } from "@/types/ConfigItems";
 import { Product, Products } from "@/types/Product";
 import { productCards } from "../Cards/helpers/productCards";
 import ProgressBar from "../ProgressBar/ProgressBar";
@@ -23,23 +18,10 @@ const TabsSlider: React.FunctionComponent<SliderProps> = ({
   items,
   itemClassName,
   listClassName,
-  initialSlideIndex,
 }) => {
-  const {
-    currentSlide,
-    moveToPrev,
-    moveToNext,
-    moveToSlide,
-    destroySlider,
-    sliderRef,
-    loaded,
-    dragStarted,
-    slideChanged,
-    totalSlides,
-    firstSlide,
-    lastSlide,
-    dragEnded,
-  } = useContext(KeenSliderContext) as KeenSliderContextValues;
+  const { currentSlide, sliderRef, totalSlides } = useContext(
+    KeenSliderContext
+  ) as KeenSliderContextValues;
 
   const cards = productCards({
     data: items,

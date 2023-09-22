@@ -4,7 +4,6 @@ import { tables } from "../Table/helpers/table";
 import { useContext } from "react";
 import Link from "next/link";
 import { CartContextValues } from "@/contexts/CartContext/CartProvider";
-// import Dialog from "../Dialog/Dialog";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Close } from "../Icons";
 import dynamic from "next/dynamic";

@@ -1,6 +1,4 @@
-// import * as React from "react";
 import { useContext, useEffect, useState } from "react";
-import Button from "../../Button";
 import Image from "next/image";
 import {
   ProductDescription,
@@ -28,7 +26,7 @@ const StoriesCard1: React.FunctionComponent<StoriesCard1Props> = ({
 }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imagesLoadedCount, setImagesLoadedCount] = useState(0);
-  const {numberToCurrency} = useContext(LocaleContext)
+  const { numberToCurrency } = useContext(LocaleContext);
 
   const handleImageLoad = () => {
     setImagesLoadedCount((prevCount) => prevCount + 1);
@@ -80,7 +78,9 @@ const StoriesCard1: React.FunctionComponent<StoriesCard1Props> = ({
               <p className="mt-1.5 max-w-[40ch] text-xs text-white line-clamp-3">
                 {description}
               </p>
-              <h4 className="text-3xl font-medium text-white">{numberToCurrency(price)}</h4>
+              <h4 className="text-3xl font-medium text-white">
+                {numberToCurrency(price)}
+              </h4>
             </div>
           </div>
         </div>

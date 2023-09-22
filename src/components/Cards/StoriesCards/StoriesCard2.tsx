@@ -1,6 +1,4 @@
-// import * as React from "react";
 import { useContext } from "react";
-import Button from "../../Button";
 import LocaleContext from "@/contexts/LocaleContext/LocaleContext";
 
 interface StoriesCard2Props {
@@ -13,7 +11,6 @@ interface StoriesCard2Props {
 const StoriesCard2: React.FC<StoriesCard2Props> = ({
   title,
   description,
-  image,
   price,
 }) => {
   const { numberToCurrency } = useContext(LocaleContext);
@@ -36,15 +33,9 @@ const StoriesCard2: React.FC<StoriesCard2Props> = ({
             <h4 className="text-3xl font-medium text-white">
               {numberToCurrency(price)}
             </h4>
-            {/* <Button asLink href="#">
-              Saber Mais
-            </Button> */}
           </div>
         </div>
       </div>
-      {/* <div className="w-full  bg-slate-300  text-center font-bold">
-            <a href="" className="inline-block w-full p-6">Saber Mais</a>
-          </div> */}
     </div>
   );
 };

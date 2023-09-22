@@ -1,7 +1,5 @@
-import { useContext, useEffect, useMemo, useState } from "react";
-import ProductContext from "@/contexts/ProductsContext/ProductsContext";
+import { useEffect, useMemo, useState } from "react";
 import KeenSlider from "@/contexts/KeenSliderContext/KeenSlider";
-import { organizeData } from "@/utils/groupByCategory";
 import { storiesCards } from "@/components/Cards/helpers/storiesCards";
 import { avatarsCreator } from "@/components/Avatar/helper/avatars";
 import UnorderedList from "../UnorderedList/UnorderedList";
@@ -10,8 +8,6 @@ import { Close } from "../Icons";
 import { QueryResponse } from "@/types/QueryResponse";
 import { Products } from "@/types/Product";
 import { Categories, Category } from "@/types/Categories";
-import { ConfigItems } from "@/types/ConfigItems";
-import { compareItems } from "@/utils/compare";
 import StoriesSlider from "@/components/keenSlider/StoriesSlider";
 import { useRouter } from "next/router";
 import { useFetchProducts } from "@/hooks/useFetchProducts";
@@ -31,15 +27,11 @@ const ProductStories: React.FunctionComponent<ProductStoriesProps> = ({
   query,
 }) => {
   const url = "https://dummyjson.com/products";
-  const { categories, products} = useFetchProducts(url)
-  // const [products, setProducts] = useState<Products>([]);
+  const { categories } = useFetchProducts(url);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const router = useRouter();
 
-  const handleDialog = (isOpen: boolean) => {
-    setDialogOpen(isOpen);
-  };
   const handleStoriesDialog = (isOpen: boolean, slideIndex?: number) => {
     if (slideIndex !== undefined) {
       setCurrentSlide(slideIndex);
@@ -51,12 +43,6 @@ const ProductStories: React.FunctionComponent<ProductStoriesProps> = ({
   categories.sort((a, b) =>
     a.title === "All products" ? -1 : b.title === "All products" ? 1 : 0
   );
-
-  // useEffect(() => {
-  //   if (query.data !== undefined) {
-  //     setProducts(query.data.products);
-  //   }
-  // }, [products, query.data]);
 
   useEffect(() => {
     setDialogOpen(false);

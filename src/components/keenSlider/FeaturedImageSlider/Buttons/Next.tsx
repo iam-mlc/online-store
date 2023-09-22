@@ -9,9 +9,6 @@ interface NextProps extends ScaleEffectProps {}
 const Next: React.FC<NextProps> = ({ ...props }) => {
   return (
     <button
-      // className={`${className !== undefined ? className : ""} block`}
-      // onClick={onClick}
-      // disabled={disabled}
       {...props}
     >
       <Icon className="opacity-70" />

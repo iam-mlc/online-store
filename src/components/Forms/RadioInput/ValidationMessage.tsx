@@ -16,13 +16,11 @@ const ValidationMessage: React.FC<ValidationMessageProps> = ({
   let successTimeout: NodeJS.Timeout;
   const {
     coords,
-    errorMessage,
     isError,
     isLoading,
     isSupported,
     isRetrying,
     isRejected,
-    handleGeolocation,
     reachedTimeout,
   } = useContext(GeolocationContext);
 

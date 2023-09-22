@@ -1,48 +1,17 @@
-import Heading from "../../Heading";
 import Link from "next/link";
 import NextImage from "next/image";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useContext, useEffect, useMemo, useState } from "react";
-import {
-  AddToCart,
-  Check,
-  Close,
-  Danger,
-  Fullscreen,
-  VisitLink,
-} from "@/components/Icons";
+import { useContext, useState } from "react";
+import { Check, Danger } from "@/components/Icons";
 import { withLoadingSpinner } from "@/components/hocs/withLoadingSpinner";
 import { CartContext } from "@/contexts/CartContext/cartContext";
-import {
-  Product,
-  ProductDescription,
-  ProductID,
-  ProductImage,
-  ProductImages,
-  ProductPrice,
-  ProductStock,
-  ProductTitle,
-} from "@/types/Product";
 import MyButton from "@/components/Button";
 import QuantityControl from "@/components/QuantityControl/QuantityControl";
-import { useWindowSize } from "react-use";
-import { TriggerAndContent } from "@/types/TriggerAndContent";
-import { ListItem } from "@/types/ListItem";
-import Dialog from "@/components/Dialog/Dialog";
 import LocaleContext from "@/contexts/LocaleContext/LocaleContext";
 import { ProductCardProps } from "@/types/ProductCard";
 import { withScaleEffect } from "@/components/hocs/withScaleEffect";
 
-// interface ProductCardProps {
-//   title?: ProductTitle;
-//   description?: ProductDescription;
-//   price?: ProductPrice;
-//   image?: ProductImage;
-//   stock?: ProductStock;
-//   id: ProductID;
-// }
-
-const Button = withScaleEffect(MyButton)
+const Button = withScaleEffect(MyButton);
 const Image = withLoadingSpinner(NextImage);
 
 const ProductCard2: React.FC<ProductCardProps> = ({

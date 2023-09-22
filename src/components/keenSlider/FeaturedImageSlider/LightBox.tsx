@@ -1,4 +1,3 @@
-import * as React from "react";
 import Dialog from "@/components/Dialog/Dialog";
 import FullscreenButton from "./Buttons/Fullscreen";
 import ImageSliderLightbox from "./ImageSliderLightbox";

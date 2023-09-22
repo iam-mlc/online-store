@@ -1,26 +1,13 @@
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import CheckoutForm from "@/components/Forms/CheckoutForm";
-import Table from "@/components/Table/Table";
-import { tables } from "@/components/Table/helpers/table";
-import UnorderedList from "@/components/UnorderedList/UnorderedList";
-import { CartContextValues } from "@/contexts/CartContext/CartProvider";
-import { CartContext } from "@/contexts/CartContext/cartContext";
 import GeolocationContext from "@/contexts/GeoLocationContext/GeolocationContext";
 import LocaleContext from "@/contexts/LocaleContext/LocaleContext";
 import OrderSummaryContext from "@/contexts/OrderContext/OrderSummaryContext";
-import { useDeliveryCalculator } from "@/hooks/useDeliveryCalculator";
-import { Coordinates } from "@/types/Coordinates";
-import { Product, ProductInCart } from "@/types/Product";
-import { UserLocation } from "@/types/userLocation";
-import { calculateDistanceCost } from "@/utils/calculateDistanceCost";
 import { Separator } from "@ariakit/react";
-import { getDistance } from "geolib";
 import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 interface ICheckoutProps {}
-// const LOCAL_CURRENCY = "MT";
-// const ISO_CURRENCY = "MZN";
 const pathway = [
   { label: "Cart", path: "/cart" },
   { label: "Checkout", path: "/checkout" },
@@ -65,7 +52,6 @@ const Checkout: React.FunctionComponent<ICheckoutProps> = ({}) => {
       <section>
         <div className="flex flex-col gap-4 ml-4">
           <Breadcrumb pathway={pathway} />
-          {/* <Link href={"/cart"} className="underline underline-offset-4 mb-12">&lt;&lt; Back to Cart</Link> */}
         </div>
       </section>
       <div className="flex md:flex-row flex-col-reverse md:py-16">
