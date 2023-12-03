@@ -11,7 +11,7 @@ interface ContentParams {
     width?: number | string;
     height?: number | string;
     loader?: JSX.Element;
-    header: Function;
+    header?: Function;
     storyStyles?: Object;
   };
 }
@@ -26,19 +26,36 @@ const StoriesContent: React.FC<StoriesContentProps> = ({
   action,
   data,
 }) => {
-  return (
-    <WithHeader story={story} globalHeader={config.header}>
-      <WithSeeMore story={story} action={action}>
-        <StoriesCard1
-          title={data.title}
-          price={data.price}
-          productImage={data.thumbnail}
-          description={data.description}
-          action={action}
-        />
-      </WithSeeMore>
-    </WithHeader>
-  );
+  if(config.header){
+    return (
+      <WithHeader story={story} globalHeader={config.header}>
+        <WithSeeMore story={story} action={action}>
+          <StoriesCard1
+            title={data.title}
+            price={data.price}
+            productImage={data.thumbnail}
+            description={data.description}
+            action={action}
+          />
+        </WithSeeMore>
+      </WithHeader>
+    );
+  }
+  else{
+    return (
+      <WithHeader story={story} globalHeader={() => config.header}>
+        <WithSeeMore story={story} action={action}>
+          <StoriesCard1
+            title={data.title}
+            price={data.price}
+            productImage={data.thumbnail}
+            description={data.description}
+            action={action}
+          />
+        </WithSeeMore>
+      </WithHeader>
+    );
+  }
 };
 
 export default StoriesContent;
