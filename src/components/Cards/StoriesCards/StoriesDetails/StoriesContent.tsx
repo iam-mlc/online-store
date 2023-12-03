@@ -11,7 +11,7 @@ interface ContentParams {
     width?: number | string;
     height?: number | string;
     loader?: JSX.Element;
-    header?: Function;
+    header: Function;
     storyStyles?: Object;
   };
 }
